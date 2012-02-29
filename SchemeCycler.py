@@ -16,6 +16,7 @@ def cycle_scheme(backward=False):
         os.path.basename(s)
         for s in glob.glob(os.path.join(schemes_path, '*.tmTheme'))
     ]
+    schemes.sort()
     settings = sublime.load_settings('Preferences.sublime-settings')
     current_scheme = os.path.basename(settings.get('color_scheme'))
     scheme_index = schemes.index(current_scheme) + (backward and -1 or 1)
