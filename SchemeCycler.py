@@ -37,11 +37,11 @@ def cycle_scheme(backward=False):
     )
 
 
-class CycleSchemeForwardCommand(sublime_plugin.TextCommand):
+class NextColorSchemeCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         cycle_scheme()
 
 
-class CycleSchemeBackwardCommand(sublime_plugin.TextCommand):
+class PreviousColorSchemeCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         cycle_scheme(backward=True)
