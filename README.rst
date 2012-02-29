@@ -4,6 +4,9 @@ SchemeCycler
 The purpose of this script it to easily cycle through every available color
 schemes. This allows choosing a scheme suitable to you mood at any time.
 
+This plugin is similar to the Camaleon plugin, but only handles Color Schemes,
+not UI themes, and doesn't required manually defining a list of schemes.
+
 Installation
 ============
 
