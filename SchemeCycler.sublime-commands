@@ -1,0 +1,12 @@
+[
+    {
+        "caption": "SchemeCycler : Next Color Scheme",
+        "command": "cycle_scheme",
+        "args":{"backward":false}
+    },
+    {
+        "caption": "SchemeCycler : Previous Color Scheme",
+        "command": "cycle_scheme",
+        "args":{"backward":true}
+    }
+]

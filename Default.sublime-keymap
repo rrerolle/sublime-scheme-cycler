@@ -1,0 +1,12 @@
+[
+	{
+		"keys": ["f8"],
+		"command": "cycle_scheme",
+		"args":{"backward":false}
+	},
+	{
+		"keys": ["shift+f8"],
+		"command": "cycle_scheme",
+		"args":{"backward":true}
+	}
+]
