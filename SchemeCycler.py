@@ -3,20 +3,37 @@
 
 import sublime
 import sublime_plugin
-import os.path
+import os
+
+
+def dirname(path):
+    return path.rsplit('/', 1)[0]
+
+
+def basename(path):
+    return path.rsplit('/', 1)[1]
+
+
+def splitext(path):
+    return path.rsplit('.', 1)
+
+
+def fix_path(path):
+    return path.replace('\\', '/')
 
 
 def cycle_scheme(backward=False):
-    package_path = sublime.packages_path()
+    package_path = fix_path(sublime.packages_path())
 
-    schemes = [os.path.join(
-            dirpath[len(os.path.dirname(package_path)) + 1:],
-            filename,
+    schemes = ['/'.join([
+                fix_path(dirpath[len(dirname(package_path)) + 1:]),
+                filename,
+            ]
         )
         for dirpath, _, filenames in os.walk(package_path)
         for filename in filenames if filename.endswith('.tmTheme')
     ]
-    schemes.sort(key=lambda x: os.path.basename(x))
+    schemes.sort(key=lambda x: basename(x))
     settings = sublime.load_settings('Preferences.sublime-settings')
     current_scheme = settings.get('color_scheme')
     scheme_index = schemes.index(current_scheme) + (backward and -1 or 1)
@@ -31,8 +48,7 @@ def cycle_scheme(backward=False):
     sublime.save_settings('Preferences.sublime-settings')
 
     sublime.status_message(
-        u'Color Scheme: ' + os.path.splitext(
-            os.path.basename(scheme).decode('utf-8'))[0]
+        u'Color Scheme: ' + splitext(basename(scheme).decode('utf-8'))[0]
     )
 
 
